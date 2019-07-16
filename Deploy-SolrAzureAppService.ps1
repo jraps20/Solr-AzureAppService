@@ -14,6 +14,9 @@ $siteRoot = "D:\home\site\wwwroot"
 Write-Output "Downloading Solr $solrVersion to $siteRoot"
 
 $downloadSource = "https://archive.apache.org/dist/lucene/solr/$solrVersion/$solrName.zip"
-Invoke-WebRequest -Uri $downloadSource -OutFile "$siteRoot\solr.zip"
+Invoke-WebRequest -Uri $downloadSource -UseBasicParsing -OutFile "..\solr.zip"
 #Start-BitsTransfer -Source $downloadSource -Destination "$siteRoot\solr.zip"
-Expand-Archive "$siteRoot\solr.zip" -DestinationPath $siteRoot
+Expand-Archive "..\solr.zip" -DestinationPath "..\"
+
+Write-Output 'Copy web.config to site root'
+xcopy web.config ..\wwwroot /Y
