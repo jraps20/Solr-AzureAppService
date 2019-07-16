@@ -68,7 +68,8 @@
                             "value": "[parameters('solrVersion')]"
                         }
                     ]
-                }
+                },
+                "httpsOnly": true
             },
             "resources": [
                 {
@@ -80,7 +81,7 @@
                     ],
                     "properties": {
                         "alwaysOn": true,
-                        "javaVersion": "11",
+                        "javaVersion": "1.8",
                         "javaContainer": "TOMCAT",
                         "javaContainerVersion": "9.0"
                     }
