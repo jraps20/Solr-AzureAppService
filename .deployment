@@ -1,0 +1,2 @@
+[config]
+command = powershell -NoProfile -NoLogo -ExecutionPolicy Unrestricted -Command "& "$pwd\Deploy-SolrAzureAppService.ps1 %solrVersion%" 2>&1 | echo"
