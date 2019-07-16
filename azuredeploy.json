@@ -60,7 +60,15 @@
             "properties": {
                 "name": "[parameters('siteName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": false
+                "clientAffinityEnabled": false,
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "solrVersion",
+                            "value": "[parameters('solrVersion')]"
+                        }
+                    ]
+                }
             },
             "resources": [
                 {
@@ -74,8 +82,7 @@
                         "alwaysOn": true,
                         "javaVersion": "11",
                         "javaContainer": "TOMCAT",
-                        "javaContainerVersion": "9.0",
-                        "solrVersion": "[parameters('solrVersion')]"
+                        "javaContainerVersion": "9.0"
                     }
                 }
             ]
