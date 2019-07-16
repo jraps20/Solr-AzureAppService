@@ -73,7 +73,7 @@
                         }
                     ]
                 },
-                "httpsOnly": "[parameters('hostingPlanName')]"
+                "httpsOnly": "[parameters('httpsOnly')]"
             },
             "resources": [
                 {
