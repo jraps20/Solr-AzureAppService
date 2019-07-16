@@ -4,8 +4,8 @@ Param(
 
 $solrName = "solr-$solrVersion"
 
-#Write-Output 'Copy wwwroot folder'
-#xcopy wwwroot ..\wwwroot /Y
+Write-Output 'Copy wwwroot folder'
+xcopy wwwroot ..\wwwroot /Y
 
 Write-Output 'Setting Security to TLS 1.2'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
