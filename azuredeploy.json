@@ -84,6 +84,20 @@
                         "javaContainer": "TOMCAT",
                         "javaContainerVersion": "9.0"
                     }
+                },
+                {
+                    "apiVersion": "2016-08-01",
+                    "name": "web",
+                    "type": "sourcecontrols",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[concat('Microsoft.Web/Sites/', parameters('siteName'), '/config/web')]"
+                    ],
+                    "properties": {
+                        "RepoUrl": "https://github.com/jraps20/Solr-AzureAppService",
+                        "branch": "master",
+                        "IsManualIntegration": true
+                    }
                 }
             ]
         }
