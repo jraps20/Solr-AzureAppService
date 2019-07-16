@@ -34,6 +34,10 @@
                 "P4"
             ],
             "type": "string"
+        },
+        "httpsOnly": {
+            "type": "bool",
+            "defaultValue": true
         }
     },
     "resources": [
@@ -69,7 +73,7 @@
                         }
                     ]
                 },
-                "httpsOnly": true
+                "httpsOnly": "[parameters('hostingPlanName')]"
             },
             "resources": [
                 {
