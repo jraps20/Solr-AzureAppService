@@ -20,7 +20,7 @@ Write-Output "Expanding Solr zip at D:\home\site directory as D:\home\site\$solr
 Expand-Archive "..\solr.zip" -DestinationPath "..\"
 
 Write-Output "Copying contents of D:\home\site\$solrName to D:\home\site\wwwroot"
-#Copy-Item -Path "..\$solrName\*" -Destination "..\wwwroot" -recurse -Force -Verbose
+
 xcopy "..\$solrName\*" "..\wwwroot" /S /Y
 
 Write-Output 'Copy web.config from repository to D:\home\site\wwwroot'
