@@ -17,8 +17,8 @@ Verified on Solr 6.6.2 and 7.2.1.
     1. `solrVersion` parameter is added as an `appSetting` to the web app. This is required to parameterize it when calling `Deploy-SolrAzureAppService.ps1`
     2. `web > config` resource. Sets `javaVersion` to 1.8 which supports all (?) Solr versions
     3. `sourcecontrols` resource. This is the brains of the operation. It deploys THIS repository to your web app.
-        1. With this resource deployment, if a file named `.deployment` exists, it is executed once the repo has been cloned to your web app
-3. The `.deployment` file calls `Deploy-SolrAzureAppService.ps1`. 
+        1. With this resource deployment, if a file named `.deployment` exists at the repo root, it is executed once the repo has been cloned to your web app
+3. The `.deployment` file calls `Deploy-SolrAzureAppService.ps1` with the Solr version as a parameter (parameters are only accessible from the `.deployment` file). 
 4. `Deploy-SolrAzureAppService.ps1` is where the majority of work occurs. This is where Dan's manual work was implemented in an automated fashion
     1. This script downloads and extracts the desired Solr version to the web root
     2. It also copies the `web.config` from the repo to the web root
