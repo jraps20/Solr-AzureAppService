@@ -100,7 +100,7 @@
                     ],
                     "properties": {
                         "RepoUrl": "https://github.com/jraps20/Solr-AzureAppService",
-                        "branch": "master",
+                        "branch": "Sitecore",
                         "IsManualIntegration": true
                     }
                 }
