@@ -27,7 +27,7 @@ Write-Output 'Copy web.config from repository to D:\home\site\wwwroot'
 xcopy web.config ..\wwwroot /Y
 
 Write-Output 'Copy default configset as sitecore'
-xcopy "..\wwwroot\server\solr\configsets\_default\*.*" "..\wwwroot\server\solr\configsets\sitecore" /s/h/e/k/f/c/Y
+xcopy "..\wwwroot\server\solr\configsets\_default\*.*" "..\wwwroot\server\solr\configsets\sitecore\*" /s/h/e/k/f/c/Y
 
 Write-Output 'Modifying uniqueKey of sitecore configset'
 
