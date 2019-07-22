@@ -69,7 +69,7 @@ $sitecoreCores = @(
 
 foreach ($coreName in $sitecoreCores) {
 	Write-Output "Creating $coreName index"
-	CreateItem "..\wwwroot\server\solr\" -Name "$coreName" -ItemType "directory"
-	CreateItem "..\wwwroot\server\solr\$coreName" -Name "data" -ItemType "directory"
+	New-Item "..\wwwroot\server\solr\" -Name "$coreName" -ItemType "directory"
+	New-Item "..\wwwroot\server\solr\$coreName" -Name "data" -ItemType "directory"
 	xcopy "..\wwwroot\server\solr\configsets\sitecore\conf" "..\wwwroot\server\solr\$coreName" /Y
 }
