@@ -46,6 +46,15 @@ $xml.Load($path)
 $uniqueKey =  $xml.SelectSingleNode("//uniqueKey")
 $uniqueKey.InnerText = "_uniqueid"
 
+$field = $xml.CreateElement("field")
+$field.SetAttribute("name", "_uniqueid")
+$field.SetAttribute("type", "string")
+$field.SetAttribute("indexed", "true")
+$field.SetAttribute("required", "true")
+$field.SetAttribute("stored", "true")
+
+$xml.DocumentElement.AppendChild($field)
+
 $xml.Save($path)
 
 $sitecoreCores = @(
