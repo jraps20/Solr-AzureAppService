@@ -27,7 +27,15 @@ Write-Output 'Copy web.config from repository to D:\home\site\wwwroot'
 xcopy web.config ..\wwwroot /Y
 
 Write-Output 'Copy default configset as sitecore'
-xcopy "..\wwwroot\server\solr\configsets\_default\*.*" "..\wwwroot\server\solr\configsets\sitecore\*" /s/h/e/k/f/c/Y
+$usingDefault = $false
+if(Test-Path "..\wwwroot\server\solr\configsets\_default" -PathType Any){
+	$usingDefault = $true
+	xcopy "..\wwwroot\server\solr\configsets\_default\*.*" "..\wwwroot\server\solr\configsets\sitecore\*" /s/h/e/k/f/c/Y
+}
+else{
+	xcopy "..\wwwroot\server\solr\configsets\basic_configs\*.*" "..\wwwroot\server\solr\configsets\sitecore\*" /s/h/e/k/f/c/Y
+}
+
 
 Write-Output 'Modifying uniqueKey of sitecore configset'
 
@@ -37,15 +45,6 @@ $xml.Load($path)
 
 $uniqueKey =  $xml.SelectSingleNode("//uniqueKey")
 $uniqueKey.InnerText = "_uniqueid"
-
-#$field = $xml.CreateElement("field")
-#$field.SetAttribute("name", "_uniqueid")
-#$field.SetAttribute("type", "string")
-#$field.SetAttribute("indexed", "true")
-#$field.SetAttribute("required", "true")
-#$field.SetAttribute("stored", "true")
-
-#$xml.DocumentElement.AppendChild($field)
 
 $xml.Save($path)
 
@@ -74,4 +73,25 @@ foreach ($coreName in $sitecoreCores) {
 	xcopy "..\wwwroot\server\solr\configsets\sitecore\conf\*" "..\wwwroot\server\solr\$coreName\conf\*" /S /Y
 	New-Item "..\wwwroot\server\solr\$coreName\core.properties"
 	Set-Content "..\wwwroot\server\solr\$coreName\core.properties" "name=$coreName`r`nupdate.autoCreateFields=false`r`ndataDir=data"
+}
+
+$xdbCores = @(
+	"xdb", 
+    "xdb_rebuild"
+)
+
+foreach ($coreName in $xdbCores) {
+	Write-Output "Creating $coreName index"
+	New-Item "..\wwwroot\server\solr\" -Name "$coreName" -ItemType "directory"
+	New-Item "..\wwwroot\server\solr\$coreName" -Name "data" -ItemType "directory"
+
+	if($usingDefault){
+		xcopy "..\wwwroot\server\solr\configsets\_default\conf\*" "..\wwwroot\server\solr\$coreName\conf\*" /S /Y
+	}
+	else{
+		xcopy "..\wwwroot\server\solr\configsets\basic_configs\conf\*" "..\wwwroot\server\solr\$coreName\conf\*" /S /Y
+	}
+
+	New-Item "..\wwwroot\server\solr\$coreName\core.properties"
+	Set-Content "..\wwwroot\server\solr\$coreName\core.properties" "name=$coreName`r`ndataDir=data"
 }

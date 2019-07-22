@@ -17,7 +17,13 @@
         },
         "solrVersion": {
             "type": "string",
-            "defaultValue": "6.6.2"
+			"allowedValues": [
+                "6.6.1",
+				"6.6.2",
+                "6.6.3",
+                "7.2.1",
+                "7.5.0"
+            ]
         },
         "skuName": {
             "defaultValue": "S1",
