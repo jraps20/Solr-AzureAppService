@@ -71,5 +71,7 @@ foreach ($coreName in $sitecoreCores) {
 	Write-Output "Creating $coreName index"
 	New-Item "..\wwwroot\server\solr\" -Name "$coreName" -ItemType "directory"
 	New-Item "..\wwwroot\server\solr\$coreName" -Name "data" -ItemType "directory"
-	xcopy "..\wwwroot\server\solr\configsets\sitecore\conf\*" "..\wwwroot\server\solr\$coreName\conf" /S /Y
+	xcopy "..\wwwroot\server\solr\configsets\sitecore\conf\*" "..\wwwroot\server\solr\$coreName\conf\*" /S /Y
+	New-Item "..\wwwroot\server\solr\$coreName\core.properties"
+	Set-Content "..\wwwroot\server\solr\$coreName\core.properties" "name=$coreName`r`nupdate.autoCreateFields=false`r`ndataDir=data"
 }
