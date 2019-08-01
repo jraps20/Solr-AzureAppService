@@ -1,3 +1,7 @@
+## Disclaimer
+
+This technique is **not recommended** for production instances. The ideal use-case is to quickly spin up sandbox environments or non-prod environments. Once this deployment is complete, the standard Sitecore install process can be followed with no tinkering of Solr: Azure Quick Start ARM templates or via Sitecore Experience Cloud Azure resource.
+
 # Solr-AzureAppService for Sitecore
 
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
