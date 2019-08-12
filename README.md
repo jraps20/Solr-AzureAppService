@@ -10,6 +10,10 @@ This script sets the `httpsOnly` property to `true` by default, but it can be mo
 
 Verified on Solr 6.6.2 and 7.2.1. 
 
+# Sitecore Solr-AzureAppService
+
+To use this guide for Sitecore development, please see the ReadMe on the Sitecore branch: https://github.com/jraps20/Solr-AzureAppService/tree/Sitecore
+
 ## Deployment Summary
 
 1. \[Deploy to Azure\] button looks for `azuredeploy.json` file at repo root
