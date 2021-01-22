@@ -7,10 +7,6 @@
             "minLength": 1,
             "defaultValue": "SolrAppServicePlan"
         },
-        "siteLocation": {
-            "type": "string",
-            "defaultValue": "East US 2"
-        },
         "siteName": {
             "type": "string",
             "defaultValue": "SolrAppService"
@@ -53,7 +49,7 @@
             "apiVersion": "2016-09-01",
             "name": "[parameters('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
-            "location": "[parameters('siteLocation')]",
+            "location": "[resourceGroup().location]",
             "sku": {
                 "name": "[parameters('skuName')]"
             },
@@ -65,7 +61,7 @@
             "apiVersion": "2016-08-01",
             "name": "[parameters('siteName')]",
             "type": "Microsoft.Web/sites",
-            "location": "[parameters('siteLocation')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
             ],
