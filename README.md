@@ -10,6 +10,8 @@ Install Solr as an App Service in about 10 minutes preconfigured for Sitecore 8.
 
 https://getfishtank.ca/blog/installing-solr-app-service-in-sitecore-azure-paas
 
+POST-INSTALL: Populate managed schema (control panel) for all indexes.
+
 This script sets the `httpsOnly` property to `true` by default, but it can be modified in the parameters (in the prompts).
 
 ## Deployment Summary
